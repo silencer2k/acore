@@ -1,6 +1,3 @@
-DROP USER IF EXISTS 'acore'@'localhost';
+CREATE DATABASE IF NOT EXISTS `acore_playerbots` DEFAULT CHARACTER SET UTF8MB4 COLLATE utf8mb4_general_ci;
 
-CREATE USER 'acore'@'localhost' IDENTIFIED BY 'acore';
-GRANT ALL PRIVILEGES ON `acore\_%`.* TO 'acore'@'localhost' WITH GRANT OPTION;
-
-CREATE DATABASE IF NOT EXISTS acore_playerbots;
+GRANT ALL PRIVILEGES ON `acore_playerbots` . * TO 'acore'@'localhost' WITH GRANT OPTION;

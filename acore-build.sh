@@ -21,9 +21,11 @@ sudo systemctl restart mysql
 header "Compiling sources"
 CTOOLS_BUILD=all ./acore.sh compiler all
 
-header "Configuring database"
-cat "$SCRIPT_DIR/conf/create_db.sql"
-sudo mysql < "$SCRIPT_DIR/conf/create_db.sql"
+header "Creating databases"
+for file in data/sql/create/create_mysql.sql "$SCRIPT_DIR/conf/create_db.sql"; do
+	cat "$file"
+	sudo mysql < "$file"
+done
 
 header "Installing services"
 for file in $SCRIPT_DIR/conf/systemd/*.service; do
