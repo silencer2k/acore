@@ -17,7 +17,7 @@ header "Creating directories"
 while read -r path; do
 	step "$path"
 	mkdir -p "$path"
-done < "$SCRIPT_DIR/conf/dirs.conf"
+done < "$SCRIPT_DIR/conf/mkdirs.conf"
 
 header "Creating symlinks"
 while read -r symlink path; do

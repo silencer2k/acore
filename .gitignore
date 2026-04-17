@@ -2,4 +2,5 @@
 
 # symlinks
 /data
-/dist
+/etc
+/logs

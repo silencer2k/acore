@@ -5,7 +5,7 @@ cd "$(dirname "$(readlink -f "$0")")"
 source "common.sh"
 
 if [ ! -d "$AC_CODE_DIR" ]; then
-	$SCRIPT_DIR/acore-fetch.sh
+	$SCRIPT_DIR/acore-prereq.sh
 fi
 
 cd "$AC_CODE_DIR"

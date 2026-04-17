@@ -9,7 +9,7 @@ cd acore
 ```
 ./acore-extract.sh
 ```
-4. Edit `*.conf` files in `dist/etc` directory
+4. Edit `*.conf` files in `etc` directory
 5. Start services:
 ```
 sudo systemctl start ac-worldserver
