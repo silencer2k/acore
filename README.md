@@ -17,7 +17,7 @@ sudo systemctl start ac-authserver
 ```
 6. Update worldserver ip address:
 ```
-echo "update realmlist set address='<SERVER_IP>' where id=1" | sudo mysql acore_auth
+echo "update realmlist set address='$(hostname -I | xargs)' where id=1" | sudo mysql acore_auth
 ```
 7. Enable autostart:
 ```
