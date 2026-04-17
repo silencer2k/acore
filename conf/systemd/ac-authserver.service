@@ -7,9 +7,9 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=1
-User=%USER%
-WorkingDirectory=%AC_CODE_DIR%
-ExecStart=%AC_CODE_DIR%/acore.sh run-authserver
+User=$SCRIPT_USER
+WorkingDirectory=$AC_CODE_DIR
+ExecStart=$AC_CODE_DIR/acore.sh run-authserver
 
 [Install]
 WantedBy=multi-user.target
