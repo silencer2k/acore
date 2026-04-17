@@ -13,6 +13,11 @@ cd "$AC_CODE_DIR"
 header "Installing dependencies"
 ./acore.sh install-deps
 
+header "Configuring dependencies"
+cat $SCRIPT_DIR/conf/mysqld-acore.cnf
+sudo cp $SCRIPT_DIR/conf/mysqld-acore.cnf /etc/mysql/mysql.conf.d
+sudo systemctl restart mysql
+
 header "Compiling sources"
 CTOOLS_BUILD=all ./acore.sh compiler all
 

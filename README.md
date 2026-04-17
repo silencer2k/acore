@@ -9,14 +9,17 @@ cd acore
 ```
 ./acore-extract.sh
 ```
-4. Update worldserver ip address:
+4. Start services:
+```
+sudo systemctl start ac-worldserver
+sudo systemctl start ac-authserver
+```
+5. Update worldserver ip address:
 ```
 echo "update realmlist set address='<SERVER_IP>' where id=1" | sudo mysql acore_auth
 ```
-5. Start services:
+6. Enable autostart:
 ```
-sudo systemctl start ac-worldserver
 sudo systemctl enable ac-worldserver
-sudo systemctl start ac-authserver
 sudo systemctl enable ac-authserver
 ```
