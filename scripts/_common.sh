@@ -3,7 +3,7 @@ set -a
 SCRIPT_NAME=$(readlink -f "$0")
 SCRIPT_DIR=$(dirname "$SCRIPT_NAME")
 
-BASE_DIR="$SCRIPT_DIR/.."
+BASE_DIR="$(realpath "$SCRIPT_DIR/..")"
 
 SERVICE_USER=$(whoami)
 
