@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 source "$(dirname "$(readlink -f "$0")")/_common.sh"
-sudo true
 
 cd "$BASE_DIR/data"
 
