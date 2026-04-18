@@ -4,7 +4,7 @@ set -e
 cd "$(dirname "$(readlink -f "$0")")"
 source "common.sh"
 
-cd data
+cd "$SCRIPT_DIR/data"
 
 rm -rf dbc maps Cameras Buildings vmaps mmaps
 mkdir -p Buildings vmaps mmaps
