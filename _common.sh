@@ -1,3 +1,5 @@
+set -a
+
 SCRIPT_NAME=$(readlink -f "$0")
 SCRIPT_DIR=$(dirname "$SCRIPT_NAME")
 
@@ -5,7 +7,21 @@ BASE_DIR="$SCRIPT_DIR"
 
 SERVICE_USER=$(whoami)
 
-AC_CODE_DIR="$BASE_DIR/src/azerothcore-wotlk"
+relpath() {
+	echo "${1#$BASE_DIR/}"
+}
+
+abspath() {
+	if [[ "$1" == "/"* ]]; then
+		echo "$1"
+		return
+	fi
+	echo "$BASE_DIR/$1"
+}
+
+AC_CODE_DIR="$(abspath src/azerothcore-wotlk)"
+
+set +a
 
 COLOR_RESET="\e[0m"
 COLOR_GREEN="\e[1;32m"

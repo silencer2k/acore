@@ -1,0 +1,31 @@
+#!/bin/bash
+set -e
+source "$(dirname "$(readlink -f "$0")")/_common.sh"
+sudo true
+
+if [ ! -d "$AC_CODE_DIR" ]; then "$SCRIPT_DIR/prereq.sh"; fi
+
+header "Installing dependencies"
+"$AC_CODE_DIR/acore.sh" install-deps
+
+header "Configuring system"
+step config/mysqld-acore.cnf
+sudo tee /etc/mysql/mysql.conf.d/mysqld-acore.cnf < "$(abspath config/mysqld-acore.cnf)"
+sudo systemctl restart mysql
+
+header "Compiling sources"
+CTOOLS_BUILD=all "$AC_CODE_DIR/acore.sh" compiler all
+
+header "Creating databases"
+for file in "$AC_CODE_DIR/data/sql/create/create_mysql.sql" "$(abspath config/create_db.sql)"; do
+	step "$(relpath "$file")"
+	cat "$file"
+	sudo mysql < "$file"
+done
+
+header "Installing services"
+for file in $(abspath config/systemd/*.service); do
+	step "$(basename "$file")"
+	cat "$file" | envsubst | sudo tee "/etc/systemd/system/$(basename "$file")"
+done
+sudo systemctl daemon-reload

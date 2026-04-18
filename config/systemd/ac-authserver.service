@@ -7,7 +7,7 @@ StartLimitIntervalSec=0
 Type=simple
 Restart=always
 RestartSec=1
-User=$SCRIPT_USER
+User=$SERVICE_USER
 WorkingDirectory=$AC_CODE_DIR
 ExecStart=$AC_CODE_DIR/acore.sh run-authserver
 
