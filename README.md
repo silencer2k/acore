@@ -1,26 +1,28 @@
-1. Clone this repo and build AzerothCore:
+1. Clone this repo:
 ```
-git clone git@github.com:silencer2k/acore.git
-cd acore
-./acore-build.sh
+git clone git@github.com:silencer2k/acore.git acore
 ```
-2. Copy whole `Data` folder from WOW client to `data` directory
-3. Extract client data:
+2. Build AzerothCore:
 ```
-./acore-extract.sh
+acore/scripts/build.sh
 ```
-4. Edit `*.conf` files in `etc` directory
-5. Start services:
+3. Copy `Data` folder from WoW client to `acore/data` directory
+4. Extract maps data:
 ```
-sudo systemctl start ac-worldserver
+acore/scripts/extract-maps.sh
+```
+5. Edit `*.conf` files in `acore/etc` directory
+6. Start services:
+```
 sudo systemctl start ac-authserver
+sudo systemctl start ac-worldserver
 ```
-6. Update worldserver ip address:
+7. Update worldserver ip address:
 ```
 echo "update realmlist set address='$(hostname -I | xargs)' where id=1" | sudo mysql acore_auth
 ```
-7. Enable autostart:
+8. Enable autostart:
 ```
-sudo systemctl enable ac-worldserver
 sudo systemctl enable ac-authserver
+sudo systemctl enable ac-worldserver
 ```
