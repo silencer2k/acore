@@ -1,10 +1,9 @@
 #!/bin/bash
 set -e
+source "$(dirname "$(readlink -f "$0")")/_common.sh"
+sudo true
 
-cd "$(dirname "$(readlink -f "$0")")"
-source "common.sh"
-
-cd "$SCRIPT_DIR/data"
+cd "$BASE_DIR/data"
 
 rm -rf dbc maps Cameras Buildings vmaps mmaps
 mkdir -p Buildings vmaps mmaps
