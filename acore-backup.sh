@@ -14,10 +14,10 @@ BACKUP_DIR="$SCRIPT_DIR/tmp/$BACKUP_NAME"
 mkdir -p "$BACKUP_DIR"
 
 header "Copying configuration"
-for file in $(find "$SCRIPT_DIR/etc/" -name '*.conf'); do
+for file in $(find "etc/" -name '*.conf'); do
 	step "$file"
 	mkdir -p "$BACKUP_DIR/$(dirname "$file")"
-	cp "$file" "$BACKUP_DIR/$file"
+	cp "$SCRIPT_DIR/$file" "$BACKUP_DIR/$file"
 done
 
 header "Dumping databases"
