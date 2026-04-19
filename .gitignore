@@ -1,8 +1,9 @@
-/backup/
-/src/
-/data/
+/src
+/data
 
-# symlinks
+/backup
+
 /etc
 /logs
+
 /tmp
