@@ -3,7 +3,7 @@ set -e
 source "$(dirname "$(readlink -f "$0")")/_common.sh"
 sudo true
 
-BACKUP_NAME="backup-$(date +"%Y-%m-%d-%H-%M-%S")"
+BACKUP_NAME="$(hostname -s)-$(date +"%Y-%m-%d-%H-%M-%S")"
 BACKUP_DIR="$BASE_DIR/tmp/$BACKUP_NAME"
 
 mkdir -p "$BACKUP_DIR"
