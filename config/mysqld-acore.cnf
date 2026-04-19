@@ -1,2 +1,11 @@
 [mysqld]
 disable_log_bin
+
+transaction_isolation = READ-COMMITTED
+
+innodb_buffer_pool_size = 8G
+innodb_io_capacity = 500
+innodb_io_capacity_max = 2500
+innodb_use_fdatasync = ON
+innodb_buffer_pool_instances = 12
+innodb_log_buffer_size = 32M
