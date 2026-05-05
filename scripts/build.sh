@@ -5,14 +5,6 @@ sudo true
 
 if [ ! -d "$AC_CODE_DIR" ]; then "$SCRIPT_DIR/prereq.sh"; fi
 
-header "Installing dependencies"
-"$AC_CODE_DIR/acore.sh" install-deps
-
-header "Configuring system"
-step config/mysqld-acore.cnf
-sudo tee /etc/mysql/mysql.conf.d/mysqld-acore.cnf < "$(abspath config/mysqld-acore.cnf)"
-sudo systemctl restart mysql
-
 header "Compiling sources"
 CTOOLS_BUILD=all "$AC_CODE_DIR/acore.sh" compiler all
 

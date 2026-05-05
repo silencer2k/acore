@@ -23,3 +23,11 @@ while read -r symlink path; do
 	step "$path" "$symlink"
 	ln -sn "$path" "$(abspath "$symlink")" || true
 done < "$(abspath config/symlinks.conf)"
+
+header "Installing dependencies"
+"$AC_CODE_DIR/acore.sh" install-deps
+
+header "Configuring system"
+step config/mysqld-acore.cnf
+sudo tee /etc/mysql/mysql.conf.d/mysqld-acore.cnf < "$(abspath config/mysqld-acore.cnf)"
+sudo systemctl restart mysql
