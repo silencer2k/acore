@@ -6,6 +6,5 @@ sudo true
 header "Updating repositories"
 while read -r path repo; do
 	step "$repo" "$path"
-	cd "$(abspath "$path")"
-	git fetch -p && git pull
+	git clone "$repo" "$(abspath "$path")" || cd "$(abspath "$path")" && git fetch -p && git pull
 done < "$(abspath config/repos.conf)"
