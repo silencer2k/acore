@@ -2,17 +2,17 @@
 ```bash
 git clone git@github.com:silencer2k/acore.git acore
 ```
-2. Configure the modules list in the `config/repos.conf` file
+2. Configure the modules list in the `config/repos.conf` file.
 3. Build AzerothCore:
 ```bash
 acore/scripts/build.sh
 ```
-4. Copy the `Data` folder from the WoW client to the `acore/data` directory
+4. Copy the `Data` folder from the WoW client to the `acore/data` directory.
 5. Extract the maps data:
 ```bash
 acore/scripts/extract-maps.sh
 ```
-6. Edit the `*.conf` files in the `acore/etc` directory
+6. Edit the `*.conf` files in the `acore/etc` directory.
 7. Start the services:
 ```bash
 sudo systemctl start ac-authserver
