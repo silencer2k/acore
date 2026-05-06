@@ -2,7 +2,7 @@
 ```bash
 git clone git@github.com:silencer2k/acore.git acore
 ```
-2. Configure the modules list in the `config/repos.conf` file.
+2. Configure the modules list in the `acore/config/repos.conf` file.
 3. Build AzerothCore:
 ```bash
 acore/scripts/build.sh
