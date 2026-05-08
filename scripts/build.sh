@@ -16,13 +16,6 @@ for file in $(find $(abspath etc/) -name '*.conf'); do
 	sed -E -i 's|^(TempDir\s*=\s*\")(\")|\1'"$BASE_DIR/tmp"'\2|' "$file"
 done
 
-header "Creating databases"
-for file in "$AC_CODE_DIR/data/sql/create/create_mysql.sql" "$(abspath config/create_db.sql)"; do
-	step "$(relpath "$file")"
-	cat "$file"
-	sudo mysql < "$file"
-done
-
 header "Installing services"
 for file in $(abspath config/systemd/*.service); do
 	step "$(basename "$file")"
